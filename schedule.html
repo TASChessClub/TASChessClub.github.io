@@ -1,91 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAS Chess Club Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Yearly Calendar</title>
+  <link rel="stylesheet" href="css/schedule.css">
+  <style>
+
+    
+  </style>
 </head>
-
 <body>
-  <header>
-    <nav class="top-nav">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="joinus.html">Join us!</a></li>
-      </ul>
-    </nav>
-    <div class="logo">
-      <img src="https://avatars.githubusercontent.com/u/577023?s=280&v=4" height="70" width="70" alt="TAS Chess Club Logo">
-    </div>
-    <div class="top-content">
-      <h1>Welcome to the TAS Chess Club Website</h1>
-      <p>We provide the ultimate chess experience.</p>
-      <a href="#" class="btn">Learn More</a>
-    </div>
-  </header>
+    <header>
+        <nav class="top-nav">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="joinus.html">Join us!</a></li>
+          </ul>
+        </nav>
+        <div class="logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/1787/1787029.png" height="70" width="70" alt="TAS Chess Club Logo">
+        </div>
+        <div class="top-content">
+          <h1>Calendar & Schedule</h1>
+          <p>A vehicle to navigate through upcoming events.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </header>
+  <div id="calendar-container"></div>
 
-  <main>
-    <section class="about">
-      <div class="container">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet mauris eu dui dictum, sit amet fringilla
-          lorem malesuada.</p>
-      </div>
-    </section>
+  <script>
+    // Array of month names
+    var months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
 
-    <section class="services">
-      <div class="container">
-        <h2>Our Services</h2>
-        <ul>
-          <li>Service 1</li>
-          <li>Service 2</li>
-          <li>Service 3</li>
-        </ul>
-      </div>
-    </section>
+    // Function to generate a calendar table for a given month and year
+    function generateCalendar(year, month) {
+      var table = document.createElement('table');
+      table.className = 'calendar-table';
+      var caption = table.createCaption();
+      caption.textContent = months[month] + ' ' + year;
 
-    <section class="products">
-      <div class="container">
-        <h2>Our Products</h2>
-        <ul>
-          <li>Product 1</li>
-          <li>Product 2</li>
-          <li>Product 3</li>
-        </ul>
-      </div>
-    </section>
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+      var currentDate = 1;
 
-    <section class="contact">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
+      // Create table rows for each week
+      for (var week = 0; week < 6; week++) {
+        var row = table.insertRow();
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+        // Create table cells for each day
+        for (var day = 0; day < 7; day++) {
+          if (currentDate > daysInMonth) {
+            break;
+          }
 
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
+          var cell = row.insertCell();
+          cell.textContent = currentDate;
+          currentDate++;
+        }
+      }
 
-          <input type="submit" value="Send Message" class="btn">
-        </form>
-      </div>
-    </section>
-  </main>
+      return table;
+    }
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 TAS Chess Club. All rights reserved.</p>
-    </div>
-  </footer>
+    // Function to generate the full year calendar
+    function generateFullYearCalendar() {
+      var container = document.getElementById('calendar-container');
 
-  <script src="script.js"></script>
+      // Create table for each month in a 4x3 grid
+      for (var i = 0; i < 12; i++) {
+        var year = new Date().getFullYear();
+        var month = i;
+
+        var calendarTable = generateCalendar(year, month);
+        container.appendChild(calendarTable);
+      }
+    }
+
+    // Generate the full year calendar
+    generateFullYearCalendar();
+  </script>
 </body>
-
 </html>
