@@ -33,13 +33,23 @@
 </head>
 <body>
     <div class="color-code">
-        <img src="https://images.delphiglass.com/image_1500/129100.jpg" alt="Color 1" class="color-image">
+        <img src="https://images.delphiglass.com/image_1500/129100.jpg" alt="Color 1" width="20" height="20">
         <span class="color-meaning">Yellow: </span> IASIS Tryouts Span
       </div>
       
       <div class="color-code">
-        <img src="image-url-2.jpg" alt="Color 2" class="color-image">
-        <span class="color-meaning">Color 2:</span> What it stands for
+        <img src="https://htmlcolorcodes.com/assets/images/colors/bright-blue-color-solid-background-1920x1080.png" alt="Color 2" width="20" height="20">
+        <span class="color-meaning">Blue:</span> Outings
+      </div>
+
+      <div class="color-code">
+        <img src="https://htmlcolorcodes.com/assets/images/colors/red-color-solid-background-1920x1080.png" alt="Color 3" width="20" height="20">
+        <span class="color-meaning">Red:</span> IASIS Competition Span
+      </div>
+      
+      <div class="color-code">
+        <img src="https://static.wikia.nocookie.net/aesthetics/images/0/0e/Green.jpg/revision/latest/thumbnail/width/360/height/450?cb=20200723215419" alt="Color 4" width="20" height="20">
+        <span class="color-meaning">Green:</span> End/Start Of School
       </div>
   <div id="calendar-container"></div>
     
@@ -78,6 +88,12 @@
             cell.textContent = currentDate;
             currentDate++;
           }
+          if (month == 7 && week == 2 && daysOfWeek[day] == "Tue" ) {
+              cell.style.backgroundColor = "green";
+            }
+          if (month == 5 && week == 1 && daysOfWeek[day] == "Fri" ) {
+              cell.style.backgroundColor = "green";
+            }
         }
       }
 
